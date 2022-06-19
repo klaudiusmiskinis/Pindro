@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/bootstrap.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      class="d-flex flex-column min-vh-100 justify-content-center align-items-center"
+    >
+      <h1>Bienvenido a Pindro</h1>
+      <p>Introduce el código de la sala para poder conectarte</p>
+      <div class="col-2 mb-3">
+        <input type="text" class="form-control" id="code" />
+        <div class="form-text">
+          ¡También puedes crear una sala <a href="/crear"> aquí</a>!
+        </div>
+      </div>
+      <button class="btn btn-primary" id="connect">Conectarme</button>
+    </div>
+    <script>
+      const connectBtn = document.querySelector("#connect");
+      const codeField = document.querySelector("#code");
+
+      codeField.addEventListener("input", checkValid);
+
+      function checkValid(event) {
+        console.log(codeField.value);
+      }
+    </script>
+  </body>
+</html>
