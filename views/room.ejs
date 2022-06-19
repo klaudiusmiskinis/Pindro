@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/bootstrap.css" />
     <link rel="stylesheet" href="assets/style.css" />
-    <title><%= roomId.substring(0, 8)%></title>
+    <title>Room</title>
   </head>
   <body>
     <div id="video-grid"></div>
@@ -14,8 +14,7 @@
   <script>
     const ROOM_ID = "<%= roomId %>";
   </script>
-  <script src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
+  <script src="assets/peer.js"></script>
   <script src="assets/stream.js"></script>
-  <script src="assets/video.js"></script>
 </html>
