@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/bootstrap.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <title><%= roomId.substring(0, 8)%></title>
+  </head>
+  <body>
+    <div id="video-grid"></div>
+  </body>
+  <script>
+    const ROOM_ID = "<%= roomId %>";
+  </script>
+  <script src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="assets/stream.js"></script>
+  <script src="assets/video.js"></script>
 </html>
