@@ -12,6 +12,10 @@ app.get("/assets/:file", (req, res) => {
   res.sendFile(__dirname + "/views/assets/" + req.params.file);
 });
 
+app.get("/assets/:file", (req, res) => {
+  res.sendFile(__dirname + "/views/assets/" + req.params.file);
+});
+
 app.get("/", (req, res) => {
   res.redirect("/home");
 });
@@ -32,10 +36,9 @@ app.get("/:room", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
   socket.on("join-room", (roomId, userId) => {
     socket.join(roomId);
-    socket.to(roomId).broadcast.emit("user-connected", userId);
+    socket.to(roomId).emit("user-connected", userId);
 
     socket.on("disconnect", () => {
       socket.to(roomId).broadcast.emit("user-disconnected", userId);
