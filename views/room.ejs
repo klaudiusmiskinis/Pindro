@@ -4,17 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/bootstrap.css" />
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Room</title>
   </head>
   <body>
-    <div id="video-grid"></div>
+    <div class="container-fluid">
+      <div id="video-grid"></div>
+    </div>
   </body>
   <script>
     const ROOM_ID = "<%= roomId %>";
   </script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="assets/peer.js"></script>
-  <script src="assets/stream.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.4.6-rc.2/peerjs.min.js"></script>
+  <script src="stream.js"></script>
 </html>
