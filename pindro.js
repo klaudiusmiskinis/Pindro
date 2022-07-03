@@ -14,10 +14,6 @@ app.get("/assets/:file", (req, res) => {
   res.sendFile(__dirname + "/views/assets/" + req.params.file);
 });
 
-app.get("/assets/:file", (req, res) => {
-  res.sendFile(__dirname + "/views/assets/" + req.params.file);
-});
-
 app.get("/", (req, res) => {
   res.redirect("/home");
 });
