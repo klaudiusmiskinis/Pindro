@@ -1,47 +1,37 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
-const io = require("socket.io")(server);
-const cors = require("cors");
-const { v4: uuidV4 } = require("uuid");
-
+const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
-app.use(express.static("public"));
-app.use(cors());
-
-app.get("/assets/:file", (req, res) => {
-  res.sendFile(__dirname + "/views/assets/" + req.params.file);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: '*'
+  }
 });
+const { ExpressPeerServer } = require("peer");
+const peerServer = ExpressPeerServer(server, {
+  debug: true,
+});
+
+app.use("/peerjs", peerServer);
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.redirect("/home");
-});
-
-app.get("/crear", (req, res) => {
-  res.redirect(`/${uuidV4()}`);
-});
-
-app.get("/home", (req, res) => {
-  res.render("home");
+  res.redirect(`/${uuidv4()}`);
 });
 
 app.get("/:room", (req, res) => {
-  const render = {
-    roomId: req.params.room,
-  };
-  res.render("room", render);
+  res.render("room", { roomId: req.params.room });
 });
 
 io.on("connection", (socket) => {
-  socket.on("join-room", (roomId, userId) => {
+  socket.on("join-room", (roomId, userId, userName) => {
     socket.join(roomId);
-    socket.to(roomId).emit("user-connected", userId);
-
-    socket.on("disconnect", () => {
-      socket.to(roomId).emit("user-disconnected", userId);
+    socket.to(roomId).broadcast.emit("user-connected", userId);
+    socket.on("message", (message) => {
+      io.to(roomId).emit("createMessage", message, userName);
     });
   });
 });
 
-server.listen(3000);
+server.listen(process.env.PORT || 3030);
