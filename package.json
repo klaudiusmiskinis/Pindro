@@ -1,0 +1,23 @@
+{
+  "name": "pindro",
+  "version": "1.0.0",
+  "description": "Pindro is Real-time meetings app. Using your browser, share your video, desktop, and presentations with teammates and customers.",
+  "main": "pindro.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klaudiusmiskinis/Pindro.git"
+  },
+  "author": "Klaudijus Miskinis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klaudiusmiskinis/Pindro/issues"
+  },
+  "homepage": "https://github.com/klaudiusmiskinis/Pindro#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
+  }
+}
